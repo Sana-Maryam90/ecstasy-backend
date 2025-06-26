@@ -1,0 +1,34 @@
+ecstasy-backend/
+│
+├── ecstasy_BE/        # Django project folder (project-level config)
+│   ├── ecstasy_BE/    # Inner folder (project settings)
+│   ├── api/           # Django app (custom logic, models, views)
+│
+├── manage.py          # Command-line utility to manage Django
+├── venv/              # Python virtual environment (optional but best practice)
+
+
+
+📂 api/ — Your Django App
+This is where your feature logic lives.
+
+File	        Purpose
+__init__.py	    Makes the folder a Python package
+admin.py	    Register models for the Django Admin panel
+apps.py	App     configuration class (used internally)
+models.py	    Define your database schema (tables) here
+tests.py	    Unit tests for the app
+views.py	    Business logic that returns data (e.g., API responses)
+migrations/	    Contains auto-generated migration files for model changes
+
+
+
+📂 ecstasy_BE/ — Your Django Project Configuration
+This is the core project folder — it contains the project-wide settings and URL routing.
+
+File	        Purpose
+__init__.py	    Makes this folder a Python package
+settings.py	    The most important file — contains all project settings like installed apps, DB, middleware, API config
+urls.py	        Routes incoming URLs to apps (like /api/)
+wsgi.py	        Entry point for WSGI-based servers (e.g., Gunicorn, Heroku)
+asgi.py	        Entry point for async servers (like Daphne, for WebSockets)
