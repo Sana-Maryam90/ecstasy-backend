@@ -14,9 +14,9 @@ class Category(models.Model):
 class Product(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField()
-    price = models.DecimalField(max_digits=10, decimal_places=2)
+    price = models.DecimalField(max_digits=10, decimal_places=0)
     category = models.ForeignKey(Category, related_name='products', on_delete=models.CASCADE)
-    image = models.ImageField(upload_to='media/images/')
+    image = models.ImageField(upload_to='images/')
     is_active = models.BooleanField(default=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
