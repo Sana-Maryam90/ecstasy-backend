@@ -23,6 +23,21 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+# Order Model
+class Order(models.Model):
+    full_name = models.CharField(max_length=100)
+    email = models.EmailField()
+    address = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    paid = models.BooleanField(default=False)
+
+# OrderItem Model, for items in an order
+class OrderItem(models.Model):
+    order = models.ForeignKey(Order, related_name='items', on_delete=models.CASCADE)
+    product = models.ForeignKey(Product, on_delete=models.PROTECT)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    quantity = models.IntegerField()
+
 
 # Product Image Model
 # class ProductImage(models.Model):
