@@ -20,9 +20,12 @@ COPY . .
 EXPOSE 8000
 
 # Run Django’s development server
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"] 
+# CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"] 
 # Start the development server on port 8000, and listen on all available network interfaces (not just localhost)
 #The CMD manage.py is only meant for development purposes and should be changed for a WSGI server.
+
+# Run server
+CMD ["gunicorn", "ecstasy_BE.wsgi:application", "--bind", "0.0.0.0:8000"]
 
 #----NOTES----
 # FROM: Selects the image with the Python version you need.
